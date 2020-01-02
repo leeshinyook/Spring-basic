@@ -4,8 +4,8 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<bean id="tv" class="com.springbook.biz.SamsungTV" init-method="initMethod" destroy-method="destroyMethod" scope="singleton">
-		<constructor-arg index="0" ref="apple"></constructor-arg>
-		<constructor-arg index="1" value="27000000"></constructor-arg>
+		<property name="speaker" ref="sony"></property>
+		<property name="price" value="27000000"></property>
 	</bean>
 	<bean id="sony" class="com.springbook.biz.SonySpeaker"></bean>
 	<bean id="apple" class="com.springbook.biz.AppleSpeaker"></bean>
