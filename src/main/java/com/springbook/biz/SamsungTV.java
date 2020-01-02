@@ -1,6 +1,8 @@
 package com.springbook.biz;
 
 public class SamsungTV implements TV {
+	private SonySpeaker speaker;
+	
 	public SamsungTV() {
 		System.out.println("===> SamsungTV 객체 생성");
 	}
@@ -17,10 +19,14 @@ public class SamsungTV implements TV {
 		System.out.println("SamsungTV --- 전 끝다.");
 	}
 	public void volumeUp() {
-		System.out.println("SamsungTV --- 소리 올린다.");
+		speaker = new SonySpeaker();
+		speaker.volumeUp();
+//		System.out.println("SamsungTV --- 소리 올린다.");
 	}
 	public void volumeDown() {
-		System.out.println("SamsungTV --- 소리 내린다.");
+		speaker = new SonySpeaker();
+		speaker.volumeDown();
+//		System.out.println("SamsungTV --- 소리 내린다.");
 	}
 
 }
