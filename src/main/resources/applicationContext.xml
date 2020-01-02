@@ -3,7 +3,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="tv" class="com.springbook.biz.SamsungTV" init-method="initMethod" destroy-method="destroyMethod" scope="singleton"/>
-	
+	<bean id="tv" class="com.springbook.biz.SamsungTV" init-method="initMethod" destroy-method="destroyMethod" scope="singleton">
+		<constructor-arg ref="sony"></constructor-arg>
+	</bean>
+	<bean id="sony" class="com.springbook.biz.SonySpeaker"/>
 
 </beans>
