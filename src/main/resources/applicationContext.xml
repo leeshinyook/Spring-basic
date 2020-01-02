@@ -4,10 +4,24 @@
 	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="tv" class="com.springbook.biz.SamsungTV" p:speaker-ref="sony" p:price="270" init-method="initMethod" destroy-method="destroyMethod" scope="singleton">
+	<!-- <bean id="tv" class="com.springbook.biz.SamsungTV" p:speaker-ref="sony" p:price="270" init-method="initMethod" destroy-method="destroyMethod" scope="singleton"> -->
 		<!-- <property name="speaker" ref="sony"></property>
 		<property name="price" value="27000000"></property> -->
+	<!-- </bean> -->
+	<!-- <bean id="sony" class="com.springbook.biz.SonySpeaker"></bean>
+	<bean id="apple" class="com.springbook.biz.AppleSpeaker"></bean> -->
+	
+	<bean id="collectionBean" class="com.spring.ioc.injection.CollectionBean">
+		<property name="addressList">
+			<!-- <list>
+				<value>서울시 강남구 역삼동.</value>
+				<value>서울시 성동구 행당동.</value>
+			</list> -->
+			<set value-type="java.lang.String">
+				<value>서울시 강남구 역삼동.</value>
+				<value>서울시 성동구 성수동.</value>
+				<value>서울시 성동구 성수동.</value>
+			</set>
+		</property>
 	</bean>
-	<bean id="sony" class="com.springbook.biz.SonySpeaker"></bean>
-	<bean id="apple" class="com.springbook.biz.AppleSpeaker"></bean>
 </beans>
