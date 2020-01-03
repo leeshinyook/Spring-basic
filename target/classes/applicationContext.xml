@@ -9,6 +9,7 @@
 	<context:component-scan base-package="com.spring.biz"></context:component-scan>
 	<bean id="tv" class="com.springbook.biz.LgTV"></bean>
 	<bean id="sony" class="com.springbook.biz.SonySpeaker"></bean>
+	<bean id="apple" class="com.springbook.biz.AppleSpeaker"></bean>
 	<!-- <bean id="tv" class="com.springbook.biz.SamsungTV" p:speaker-ref="sony" p:price="270" init-method="initMethod" destroy-method="destroyMethod" scope="singleton"> -->
 		<!-- <property name="speaker" ref="sony"></property>
 		<property name="price" value="27000000"></property> -->
