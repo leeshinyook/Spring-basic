@@ -11,6 +11,7 @@
 	<context:component-scan base-package="com.springbook.biz"></context:component-scan>
 	<bean id="log" class="com.springbook.biz.common.LogAdvice"></bean>
 	<bean id="before" class="com.springbook.biz.common.BeforeAdvice"></bean>
+	<bean id="afterReturning" class="com.springbook.biz.common.AfterReturningAdvice"></bean>
 	<aop:config>
 		<aop:pointcut expression="execution(* com.springbook.biz..*Impl.*(..))" id="allPointcut"/>
 		<aop:pointcut expression="execution(* com.springbook.biz..*Impl.get*(..))" id="getPointcut"/>
@@ -19,6 +20,9 @@
 		</aop:aspect>
 		<aop:aspect ref="before">
 			<aop:before method="beforeLog" pointcut-ref="allPointcut"/>
+		</aop:aspect>	
+		<aop:aspect ref="afterReturning">
+			<aop:after-returning method="afterLog" pointcut-ref="allPointcut"/>
 		</aop:aspect>
 	</aop:config>
 
