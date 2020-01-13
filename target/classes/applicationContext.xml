@@ -25,10 +25,10 @@
 			<aop:before method="beforeLog" pointcut-ref="allPointcut"/>
 		</aop:aspect>	
 		<aop:aspect ref="afterReturning">
-			<aop:after-returning method="afterLog" pointcut-ref="allPointcut"/>
+			<aop:after-returning method="afterLog" pointcut-ref="allPointcut" returning="returnObj"/>
 		</aop:aspect>
 		<aop:aspect ref="afterThrowing">
-			<aop:after-throwing method="exceptionLog" pointcut-ref="allPointcut"/>
+			<aop:after-throwing method="exceptionLog" pointcut-ref="allPointcut" throwing="exceptObj"/>
 		</aop:aspect>
 		<aop:aspect ref="AfterAdvice">
 			<aop:after method="finallyLog" pointcut-ref="allPointcut"/>
