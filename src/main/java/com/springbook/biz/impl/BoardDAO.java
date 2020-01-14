@@ -60,6 +60,8 @@ public class BoardDAO {
 		} finally {
 			JDBCUtil.close(stmt, conn);
 		}
+//		String BOARD_UPDATE = "update board set title=?, content=? where seq=?";
+//		int cnt = jdbcTemplate.update()
 	}
 	// 글 삭제 
 	public void deleteBoard(BoardVO vo) {
