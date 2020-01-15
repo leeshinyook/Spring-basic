@@ -14,4 +14,4 @@ spring-quick-start(스프링 퀵 스타트, 저자 : 채규태)
 
 ​	아래 실습내용은 기존 책의 내용에서 스스로 생각하여 책에 없는 내용을 추가한 것입니다.
 
-1. [Model1. JSP 게시판 회원가입기능 
+1. [Model1. JSP 게시판 회원가입기능](https://github.com/leeshinyook/Spring-basic/blob/master/practice/model1JSP.md)
