@@ -8,11 +8,14 @@ import javax.servlet.http.HttpSession;
 
 import com.springbook.biz.board.BoardVO;
 import com.springbook.biz.impl.BoardDAO;
-import com.springbook.view.controller.Controller;
+
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.Controller;
+
 
 public class GetBoardListController implements Controller {
 	@Override
-	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("글 목록 검색 처리");
 		
 		// 1. 사용자 입력 정보 추출(검색 기능은 나중에 구현)
@@ -22,8 +25,14 @@ public class GetBoardListController implements Controller {
 		List<BoardVO> boardList = boardDAO.getBoardList(vo);
 		
 		// 3. 검색 결과를 세션에 저장하고 목록 화면을 리턴한다.
-		HttpSession session = request.getSession();
-		session.setAttribute("boardList", boardList);
-		return "getBoardList";
+//		HttpSession session = request.getSession();
+//		session.setAttribute("boardList", boardList);
+//		return "getBoardList";
+		
+		// 3. 검색 결과와 화면 정보를 ModelAndView에 저장하여 리턴한다.
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("boardList", boardList); // Model 정보 저장.
+		mav.setViewName("getBoardList"); //// View 정보 저
+		return mav;
 	}
 }
