@@ -14,6 +14,8 @@ public class BoardVO {
 	private String content;
 	private Date regDate;
 	private int cnt;
+	private String searchCondition;
+	private String searchKeyword;
 	
 	public int getSeq() {
 		return seq;
@@ -55,6 +57,18 @@ public class BoardVO {
 	public String toString() {
 		return "BoardVO [seq=" + seq + ", title =" + title + ", writer =" + writer + ", content =" + content + ""
 				+ "regDate = " + regDate + ", cnt = " + cnt + "]";
+	}
+	public String getSearchCondition() {
+		return searchCondition;
+	}
+	public void setSearchCondition(String searchCondition) {
+		this.searchCondition = searchCondition;
+	}
+	public String getSearchKeyword() {
+		return searchKeyword;
+	}
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
 	}
 	
 }
