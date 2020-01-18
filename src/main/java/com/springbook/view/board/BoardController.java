@@ -1,5 +1,9 @@
 package com.springbook.view.board;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,13 +11,12 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import java.util.HashMap;
-import java.util.Map;
+
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.springbook.biz.board.BoardVO;
 import com.springbook.biz.impl.BoardDAO;
-
+import com.springbook.biz.board.BoardService;
 
 
 // 어노테이션을 이용하여 Controller클래스를 구현하면, 대부분 4~5줄 내외로 간단하게 구현된다.
@@ -21,6 +24,10 @@ import com.springbook.biz.impl.BoardDAO;
 @Controller
 @SessionAttributes("board")
 public class BoardController {
+	@Autowired
+	private BoardService boardService;
+	
+	
 	
 	// 검색 조건 목록 설정
 	@ModelAttribute("conditionMap")
@@ -36,7 +43,7 @@ public class BoardController {
 	// 글등록
 	@RequestMapping("/insertBoard.do")
 	public String insertBoard(BoardVO vo, BoardDAO boardDAO) {
-		boardDAO.insertBoard(vo);
+		boardService.insertBoard(vo);
 		return "getBoardList.do";
 	}
 	
@@ -49,21 +56,21 @@ public class BoardController {
 		System.out.println("내용 : " + vo.getContent());
 		System.out.println("등록일 : " + vo.getRegDate());
 		System.out.println("조회수 : " + vo.getCnt());
-		boardDAO.updateBoard(vo);
+		boardService.updateBoard(vo);
 		return "getBoardList.do";
 	}
 	
 	// 글 삭제
 	@RequestMapping("/deleteBoard.do")
 	public String deleteBoard(BoardVO vo, BoardDAO boardDAO) {
-		boardDAO.deleteBoard(vo);
+		boardService.deleteBoard(vo);
 		return "getBoardList.do";
 	}
 	
 	// 글 상세 조회
 	@RequestMapping("/getBoard.do")
 	public String getBoard(BoardVO vo, BoardDAO boardDAO, Model model) {
-		model.addAttribute("board", boardDAO.getBoard(vo));
+		model.addAttribute("board", boardService.getBoard(vo));
 		return "getBoard.jsp"; // View 이름 리턴.
 	}
 	
@@ -71,7 +78,7 @@ public class BoardController {
 	@RequestMapping("/getBoardList.do")
 	public String getBoardList(BoardVO vo, BoardDAO boardDAO, Model model) {
 		// model 정보 저장
-		model.addAttribute("boardList", boardDAO.getBoardList(vo));
+		model.addAttribute("boardList", boardService.getBoardList(vo));
 		return "getBoardList.jsp"; // View 이름 리턴.
 	}
 }
