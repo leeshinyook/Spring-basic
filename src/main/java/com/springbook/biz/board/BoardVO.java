@@ -4,19 +4,14 @@ import java.sql.Date;
 import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import java.util.Date;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlTransient;
 
 // VO(Value Object)
 // database board table에 포함된 칼럼과 같은 이름의 멤버변수를 private 접근제한자로 선언한다. 그리고
 // private 멤버변수에 접근하는 Getter / Setter 메소드를 선언한다.
 // DTO(Data transfer Object)
 
-@XmlAccessorType(XmlAccessType.FIELD)
+
 public class BoardVO {
 	private int seq;
 	private String title;
