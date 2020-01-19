@@ -18,6 +18,11 @@ import com.springbook.biz.board.BoardVO;
 import com.springbook.biz.impl.BoardDAO;
 import com.springbook.biz.board.BoardService;
 
+import java.io.File;
+import java.io.IOException;
+import org.springframework.web.multipart.MultipartFile;
+
+
 
 // 어노테이션을 이용하여 Controller클래스를 구현하면, 대부분 4~5줄 내외로 간단하게 구현된다.
 // 위를 통합하여 Controller를 하나의 클래스로 구현하면 관리가 더욱 편해진다.
@@ -43,6 +48,15 @@ public class BoardController {
 	// 글등록
 	@RequestMapping("/insertBoard.do")
 	public String insertBoard(BoardVO vo, BoardDAO boardDAO) {
+		
+		// 파일업로드 처리
+		MultipartFile uploadFile = vo.getUploadFile();
+		if(!uploadFile.isEmpty()) {
+			String fileName = uploadFile.getOriginalFilename();
+			uploadFile.transferTo(new File("D:/" + fileName));
+		}
+		
+		
 		boardService.insertBoard(vo);
 		return "getBoardList.do";
 	}

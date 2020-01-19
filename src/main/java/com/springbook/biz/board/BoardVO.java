@@ -1,7 +1,7 @@
 package com.springbook.biz.board;
 
 import java.sql.Date;
-
+import org.springframework.web.multipart.MultipartFile;
 // VO(Value Object)
 // database board table에 포함된 칼럼과 같은 이름의 멤버변수를 private 접근제한자로 선언한다. 그리고
 // private 멤버변수에 접근하는 Getter / Setter 메소드를 선언한다.
@@ -16,6 +16,7 @@ public class BoardVO {
 	private int cnt;
 	private String searchCondition;
 	private String searchKeyword;
+	private MultipartFile uploadFile;
 	
 	public int getSeq() {
 		return seq;
@@ -69,6 +70,12 @@ public class BoardVO {
 	}
 	public void setSearchKeyword(String searchKeyword) {
 		this.searchKeyword = searchKeyword;
+	}
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
 	}
 	
 }
