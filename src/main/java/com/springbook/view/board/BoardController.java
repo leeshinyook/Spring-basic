@@ -47,7 +47,7 @@ public class BoardController {
 	
 	// 글등록
 	@RequestMapping("/insertBoard.do")
-	public String insertBoard(BoardVO vo, BoardDAO boardDAO) {
+	public String insertBoard(BoardVO vo, BoardDAO boardDAO) throws IOException {
 		
 		// 파일업로드 처리
 		MultipartFile uploadFile = vo.getUploadFile();
