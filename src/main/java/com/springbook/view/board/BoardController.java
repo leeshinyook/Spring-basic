@@ -22,6 +22,9 @@ import java.io.File;
 import java.io.IOException;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 
 
 // 어노테이션을 이용하여 Controller클래스를 구현하면, 대부분 4~5줄 내외로 간단하게 구현된다.
@@ -31,6 +34,15 @@ import org.springframework.web.multipart.MultipartFile;
 public class BoardController {
 	@Autowired
 	private BoardService boardService;
+	
+	@RequestMapping("/dataTransform.do")
+	@ResponseBody
+	public List<BoardVO> dataTransform(BoardVO vo) {
+		vo.setSearchCondition("TITLE");
+		vo.setSearchKeyword("");
+		List<BoardVO> boardList = boardService.getBoardList(vo);
+		return boardList;
+	}
 	
 	
 	

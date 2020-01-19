@@ -30,4 +30,22 @@
 		</property>
 		<property name="defaultErrorView" value="common/error.jsp"/>
 	</bean>
+<!-- 	다국어 설정 -->
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>message.messageSource_en.properties</value>
+				<value>message.messageSource_ko.properties</value>
+			</list>
+		</property>
+	</bean> 
+	<!-- LocaleResolver 등록 -->
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"></bean>
+	
+<!-- 	LocaleChangeInterceptor 등록 --> 
+	<mvc:interceptors>
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+			<property name="paramName" value="lang"/>
+		</bean>
+	</mvc:interceptors>
 </beans>
