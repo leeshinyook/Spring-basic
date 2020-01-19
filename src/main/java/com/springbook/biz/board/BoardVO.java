@@ -1,8 +1,16 @@
 package com.springbook.biz.board;
 
-import java.sql.Date;
+import java.util.Date;
+
 import org.springframework.web.multipart.MultipartFile;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 
 
@@ -11,16 +19,23 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 // private 멤버변수에 접근하는 Getter / Setter 메소드를 선언한다.
 // DTO(Data transfer Object)
 
-
+@Entity
+@Table(name="BOARD")
 public class BoardVO {
+	@Id
+	@GeneratedValue
 	private int seq;
 	private String title;
 	private String writer;
 	private String content;
-	private Date regDate;
+	@Temporal(TemporalType.DATE)
+	private Date regDate = new Date();
 	private int cnt;
+	@Transient
 	private String searchCondition;
+	@Transient
 	private String searchKeyword;
+	@Transient
 	private MultipartFile uploadFile;
 	
 	public int getSeq() {
@@ -64,21 +79,18 @@ public class BoardVO {
 		return "BoardVO [seq=" + seq + ", title =" + title + ", writer =" + writer + ", content =" + content + ""
 				+ "regDate = " + regDate + ", cnt = " + cnt + "]";
 	}
-	@JsonIgnore
 	public String getSearchCondition() {
 		return searchCondition;
 	}
 	public void setSearchCondition(String searchCondition) {
 		this.searchCondition = searchCondition;
 	}
-	@JsonIgnore
 	public String getSearchKeyword() {
 		return searchKeyword;
 	}
 	public void setSearchKeyword(String searchKeyword) {
 		this.searchKeyword = searchKeyword;
 	}
-	@JsonIgnore
 	public MultipartFile getUploadFile() {
 		return uploadFile;
 	}
